@@ -1,6 +1,6 @@
 # ds_oc_kmod
 
-Kernel module for overclocking the Sony DualSense controller on XHCI controllers, if you have a native EHCI controller then you may be better off using that.
+Kernel module for overclocking the Sony DualSense controller on XHCI (USB 3.0 or higher) controllers.
 
 ## Building
 
