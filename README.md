@@ -4,6 +4,8 @@ Kernel module for overclocking the Sony DualSense controller on XHCI (USB 3.0 or
 
 ## Building
 
+It is highly recommended to install this using the Arch User Repository; (TODO: Paste AUR URL once it's been created)
+
 Use `make` to build ds_oc.ko and `sudo insmod ds_oc.ko` to load the module into the running kernel.
 
 
