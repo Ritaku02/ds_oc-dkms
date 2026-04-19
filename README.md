@@ -1,6 +1,6 @@
 # NOTICE
 
-This project, including this readme, is WIP while I get a PKGBUILD setup for the Arch User Repository. This notice will be removed once it's ready.
+This project, including this readme, is WIP while I get a PKGBUILD setup for the Arch User Repository, and do cleanup/rewrite on this readme. This notice will be removed once it's ready.
 
 # ds_oc_kmod
 
