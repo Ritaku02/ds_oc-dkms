@@ -7,7 +7,7 @@
 #define DS_PID 0x0ce6
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Jiang lai");
+MODULE_AUTHOR("Jiang lai (Previous), Ritaku02/Tineva (Further edits)");
 MODULE_DESCRIPTION("Filter kernel module to set the polling rate of the Sony DualSense Controller to a custom value on XHCI.");
 MODULE_VERSION("1.0");
 
