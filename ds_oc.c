@@ -3,8 +3,8 @@
 #include <linux/kernel.h>
 #include <linux/usb.h>
 
-#define WMO_VID 0x054c
-#define WMO_PID 0x0ce6
+#define DS_VID 0x054c
+#define DS_PID 0x0ce6
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Jiang lai");
@@ -65,7 +65,7 @@ static int on_usb_notify(struct notifier_block* self, unsigned long action, void
 
 	switch(action) {
 		case USB_DEVICE_ADD:
-			if(device->descriptor.idVendor == WMO_VID && device->descriptor.idProduct == WMO_PID && adapter_device == NULL) {
+			if(device->descriptor.idVendor == DS_VID && device->descriptor.idProduct == DS_PID && adapter_device == NULL) {
 				adapter_device = device;
 				printk(KERN_INFO "ds_oc: Overclockable mouse connected\n");
 
@@ -87,7 +87,7 @@ static int on_usb_notify(struct notifier_block* self, unsigned long action, void
 static struct notifier_block usb_nb = { .notifier_call = on_usb_notify };
 
 static int usb_device_cb(struct usb_device* device, void* data) {
-	if(device->descriptor.idVendor == WMO_VID && device->descriptor.idProduct == WMO_PID && adapter_device == NULL) {
+	if(device->descriptor.idVendor == DS_VID && device->descriptor.idProduct == DS_PID && adapter_device == NULL) {
 		adapter_device = device;
 		printk(KERN_INFO "ds_oc: wheel mouse optical connected\n");
 
