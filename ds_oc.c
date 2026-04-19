@@ -44,7 +44,7 @@ static unsigned short patch_endpoints(unsigned short interval) {
 			 */
 			int ret = usb_lock_device_for_reset(adapter_device, NULL);
 			if(ret) {
-				printk(KERN_ERR "ds_oc: Warning! Failed to acquire lock for Sony DualSense Controller (error: %d). Resetting device anyway...\n", ret);
+				printk(KERN_ERR "ds_oc: Warning! Failed to acquire lock for the DualSense Controller (error: %d). Resetting device anyway...\n", ret);
 			}
 			/* TODO: It might be possible to make the new bInterval value take effect without calling usb_reset_device? */
 			if(usb_reset_device(adapter_device)) {
