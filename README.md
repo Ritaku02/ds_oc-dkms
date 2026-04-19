@@ -1,4 +1,4 @@
-# ds_oc_kmod
+# ds_oc-dkms
 
 Kernel module for overclocking the Sony DualSense controller on XHCI (USB 3.0 or higher) controllers.
 
