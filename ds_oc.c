@@ -8,7 +8,7 @@
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Jiang lai");
-MODULE_DESCRIPTION("Filter kernel module to set the polling rate of the Sony DualSense controller to a custom value on XHCI.");
+MODULE_DESCRIPTION("Filter kernel module to set the polling rate of the Sony DualSense Controller to a custom value on XHCI.");
 MODULE_VERSION("1.0");
 
 static struct usb_device* adapter_device = NULL;
@@ -44,7 +44,7 @@ static unsigned short patch_endpoints(unsigned short interval) {
 			 */
 			int ret = usb_lock_device_for_reset(adapter_device, NULL);
 			if(ret) {
-				printk(KERN_ERR "ds_oc: Warning! Failed to acquire lock for USB device (error: %d). Resetting device anyway...\n", ret);
+				printk(KERN_ERR "ds_oc: Warning! Failed to acquire lock for the DualSense Controller (error: %d). Resetting device anyway...\n", ret);
 			}
 			/* TODO: It might be possible to make the new bInterval value take effect without calling usb_reset_device? */
 			if(usb_reset_device(adapter_device)) {
@@ -67,7 +67,7 @@ static int on_usb_notify(struct notifier_block* self, unsigned long action, void
 		case USB_DEVICE_ADD:
 			if(device->descriptor.idVendor == DS_VID && device->descriptor.idProduct == DS_PID && adapter_device == NULL) {
 				adapter_device = device;
-				printk(KERN_INFO "ds_oc: Overclockable mouse connected\n");
+				printk(KERN_INFO "ds_oc: DualSense Controller connected\n");
 
 				restore_interval = patch_endpoints(configured_interval);
 			}
@@ -76,7 +76,7 @@ static int on_usb_notify(struct notifier_block* self, unsigned long action, void
 		case USB_DEVICE_REMOVE:
 			if(adapter_device == device) {
 				adapter_device = NULL;
-				printk(KERN_INFO "ds_oc: Overclockable mouse disconnected\n");
+				printk(KERN_INFO "ds_oc: DualSense Controller disconnected\n");
 			}
 			break;
 	}
@@ -89,7 +89,7 @@ static struct notifier_block usb_nb = { .notifier_call = on_usb_notify };
 static int usb_device_cb(struct usb_device* device, void* data) {
 	if(device->descriptor.idVendor == DS_VID && device->descriptor.idProduct == DS_PID && adapter_device == NULL) {
 		adapter_device = device;
-		printk(KERN_INFO "ds_oc: wheel mouse optical connected\n");
+		printk(KERN_INFO "ds_oc: DualSense Controller connected\n");
 
 		restore_interval = patch_endpoints(configured_interval);
 	}
