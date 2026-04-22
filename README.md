@@ -4,7 +4,7 @@ Kernel module for overclocking the Sony DualSense controller on XHCI (USB 3.0 or
 
 ## Building
 
-The package is configured for install through makepkg on Arch Linux and derivatives. Download either release, extract the contents to a folder of your choosing, open a terminal inside the extracted `ds_oc-dkms` folder, and run `makepkg -i` to build and install the kernel module. Afterwards, restart your computer, and the module should be loaded. A good tool to test if the module is working can be installed from the AUR with your favorite AUR helper; `gamepadla-polling`. During the test, the polling rate should mostly read 1ms, though it may vary slightly at times.
+The package is configured for install through makepkg on Arch Linux and derivatives. Download either release, extract the contents to a folder of your choosing, open a terminal inside the extracted `ds_oc-dkms` folder, and run `makepkg -i` to build and install the kernel module. Afterwards, restart your computer, and the module should be loaded. A good tool to test if the module is working can be installed from the AUR with your favorite AUR helper; [gamepadla-polling](https://aur.archlinux.org/packages/gamepadla-polling). During the test, the polling rate should mostly read 1ms, though it may vary slightly at times.
 
 ## Changing the polling rate
 
