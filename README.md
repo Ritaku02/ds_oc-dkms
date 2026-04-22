@@ -1,7 +1,3 @@
-# NOTICE
-
-This project, including this readme, is WIP while I get a PKGBUILD setup for installation on Arch and derivatives, and do cleanup/rewrite on this readme. This notice will be removed once it's ready.
-
 # ds_oc-dkms
 
 Kernel module for overclocking the Sony DualSense controller on XHCI (USB 3.0 or higher) controllers.
