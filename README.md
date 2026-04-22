@@ -2,7 +2,7 @@
 
 # ds_oc-dkms
 
-Kernel module for overclocking the Sony DualSense controller on XHCI (USB 3.0 or higher) controllers forked from [Jiang-lai/ds-oc-kmod](https://github.com/Jiang-lai/ds-oc-kmod and modified to install through makepkg and dkms.
+Kernel module for overclocking the Sony DualSense controller on XHCI (USB 3.0 or higher) controllers forked from [Jiang-lai/ds-oc-kmod](https://github.com/Jiang-lai/ds-oc-kmod) and modified to install through makepkg and dkms.
 
 ## Building
 
