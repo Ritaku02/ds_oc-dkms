@@ -9,6 +9,8 @@ The package is configured for install through makepkg on Arch Linux and derivati
 Thanks to dkms, the module should be automatically rebuilt every time your kernel updates, so there should be no reason to rebuild it manually for new kernel versions.
 
 ## Changing the polling rate
+## UPDATE ##
+None of the below instructions worked for me, it always ended up with a polling rate of 1000Hz (1ms). You can still attempt them, but I can't promise changing the polling rate from 1000Hz will work.
 
 Polling rate is set according to the `bInterval` value in the USB endpoint descriptor. The value sets the polling rate in milliseconds, for example: an interval value of 4 mean 4ms, which equals 250 Hz.
 
