@@ -10,8 +10,14 @@ Thanks to dkms, the module should be automatically rebuilt every time your kerne
 
 ## Changing the polling rate
 ## UPDATE ##
-None of the below instructions worked for me, it always ended up with a polling rate of 1000Hz (1ms). You can still attempt them, but I can't promise changing the polling rate from 1000Hz will work.
+I discovered why the below instructions "weren't working for me". They actually were, it's just the DualSense with an up-to-date firmware handles polling rate in an odd way to ochieve a theroetical '8000Hz'. I switched from the Gamepadla polling rate tester to an online WebHID tester, and found that when the DualSense is given an interval of 1ms, it actually switches to an interval of 0.125ms, or 8000Hz. While sounding good on paper, I found that Steam Proton (at least on my system) seems to have issues with handling such a high polling rate, causing games to either run slow or have high input lag. Also, while this makes it seem like the DualSense is dividing the configured interval by 8, it's somehow more complicated than that. Here's what I found;
 
-Polling rate is set according to the `bInterval` value in the USB endpoint descriptor. The value sets the polling rate in milliseconds, for example: an interval value of 4 mean 4ms, which equals 250 Hz.
+- configured interval = 1; actual DualSense interval = 0.125 (1/8)
+- configured interval = 2; actual DualSense interval = 0.250 (1/8)
+- configured interval = 4; actual DualSense interval = 1ms (1/4)
+- configured interval = 6; actual DualSense interval = 4ms (6/1.5) (DualSense default over USB)
+- configured interval = 8; actual DualSense interval = 16ms (x2) (also, wut? O_o)
 
-You can attempt to change the rate by using the kernel parameter `ds_oc.rate=n` (if installed) or going into `/sys/module/ds_oc/parameters` and using `echo n > rate` (replace `n` with the value you desire) to change the value. However, changing the polling rate in these ways may not take effect. In that case, you would need to edit `ds_oc.c`, and near the top of the file, change the value of `configured_interval` to the value you desire, run `makepkg -i` again, and reboot.
+Polling rate is set according to the `bInterval` value in the USB endpoint descriptor. Normally, the value sets the polling rate in milliseconds, but as established above, the DualSense handles it quite differently.
+
+You can by using the kernel parameter `ds_oc.rate=n` (if installed) or going into `/sys/module/ds_oc/parameters` and using `echo n > rate` (replace `n` with the value you desire) to change the value. Just follow the above list to find the configured interval value for the actual interval you desire.
